@@ -1,0 +1,26 @@
+name: Probe Repo Cassette Actions logs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "log-probe.mjs"
+      - ".github/workflows/log-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: Overwrite the Actions job log
+        run: node log-probe.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
