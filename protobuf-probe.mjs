@@ -20,7 +20,7 @@ function varint(input) {
     value >>= 7n;
   }
   output.push(Number(value));
-  return Buffer.from([...output, Number(value)]);
+  return Buffer.from(output);
 }
 
 function bytes(field, value) {
