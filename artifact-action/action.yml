@@ -1,0 +1,5 @@
+name: Build Repo Cassette race artifacts
+description: Create self-referential JSON Actions artifacts with racing MIME metadata.
+runs:
+  using: node24
+  main: index.mjs
