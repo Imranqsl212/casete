@@ -3,6 +3,10 @@ name: Build Repo Cassette artifacts
 on:
   push:
     branches: [main]
+    paths:
+      - "artifact-action/**"
+      - "package.json"
+      - "package-lock.json"
   workflow_dispatch:
 
 permissions:

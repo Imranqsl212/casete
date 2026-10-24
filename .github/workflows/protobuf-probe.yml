@@ -1,0 +1,26 @@
+name: Probe Repo Cassette protobuf artifact metadata
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "protobuf-probe.mjs"
+      - ".github/workflows/protobuf-probe.yml"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - run: npm install --ignore-scripts
+      - run: node protobuf-probe.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
