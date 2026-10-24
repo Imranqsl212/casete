@@ -1,0 +1,5 @@
+name: Probe Repo Cassette protobuf metadata
+description: Try raw protobuf MIME metadata variants for the Repo Cassette CTF.
+runs:
+  using: node24
+  main: index.mjs
